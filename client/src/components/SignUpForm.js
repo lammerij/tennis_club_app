@@ -6,12 +6,12 @@ function SignUpForm({ onLogin }) {
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [city, setCity] = useState("")
-  const [atpRating, setAtpRating] = useState("");
+  const [atpRating, setAtpRating] = useState(0);
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  function handleSubmit(event) {
+    event.preventDefault();
     setErrors([]);
     setIsLoading(true);
     fetch("/signup", {
@@ -26,12 +26,12 @@ function SignUpForm({ onLogin }) {
         city,
         atpRating,
       }),
-    }).then((r) => {
+    }).then((response) => {
       setIsLoading(false);
-      if (r.ok) {
-        r.json().then((user) => onLogin(user));
+      if (response.ok) {
+        response.json().then((user) => onLogin(user));
       } else {
-        r.json().then((err) => setErrors(err.errors));
+        response.json().then((err) => setErrors(err.errors));
       }
     });
   }

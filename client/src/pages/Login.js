@@ -4,12 +4,13 @@ import LoginForm from "../components/LoginForm";
 import SignUpForm from "../components/SignUpForm";
 import { Button } from "../styles";
 
+
 function Login({ onLogin }) {
   const [showLogin, setShowLogin] = useState(true);
 
   return (
     <Wrapper>
-      <Logo>Reciplease</Logo>
+      <Logo>Tennis Club Reviewer</Logo>
       {showLogin ? (
         <>
           <LoginForm onLogin={onLogin} />
