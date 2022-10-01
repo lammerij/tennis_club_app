@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   resources :reviews
   resources :players
   resources :tennis_clubs

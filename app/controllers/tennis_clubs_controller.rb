@@ -8,4 +8,6 @@ class TennisClubsController < ApplicationController
         club = TennisClub.find_by(id: params[:id])
         render json: club
     end
+
+    
 end
