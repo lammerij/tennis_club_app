@@ -5,9 +5,18 @@ import Login from './pages/Login';
 import { Switch, Route } from "react-router-dom";
 import NavBar from './components/NavBar';
 import ReviewList from './pages/ReviewList';
+import NewReview from './pages/NewReview';
+import TennisClubList from './pages/TennisClubList';
 
 function App() {
   const [user, setUser] = useState(null)
+
+
+  // const listOfClubs = clubs.map((club) => {
+  //   return club
+  // });
+  
+  
 
   useEffect(() => {
     // auto-login
@@ -18,7 +27,7 @@ function App() {
     });
   }, []);
 
-  if (!user) return <Login onLogin={user}/>
+  if (!user) return <Login onLogin={setUser}/>
 
   return (
     <>
@@ -26,9 +35,12 @@ function App() {
       <main>
         <Switch>
           <Route path="/new">
-            {/* <NewReview user={user} /> */}
+            <NewReview user={user} clubs={clubs} />
           </Route>
           <Route path="/">
+            <TennisClubList/>
+          </Route>
+          <Route path="/reviews">
             <ReviewList />
           </Route>
         </Switch>

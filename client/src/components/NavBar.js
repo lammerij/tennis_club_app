@@ -14,16 +14,18 @@ function NavBar({ user, setUser }) {
 
   return (
     <Wrapper>
-      <Logo>
-        <Link to="/">Tennis Club Reviewer</Link>
-      </Logo>
       <Nav>
-        <Button as={Link} to="/new">
-          New Review
-        </Button>
-        <Button variant="outline" onClick={handleLogoutClick}>
-          Logout
-        </Button>
+        <Link to="/tennis_clubs">Tennis Clubs</Link>
+      </Nav>
+      <Nav>
+        <Link to="/reviews">Reviews</Link>
+      </Nav>
+
+      {/* <Logo>
+        <Link to="/">Tennis Club Reviewer</Link>
+      </Logo> */}
+      <Nav>
+        <Button onClick={handleLogoutClick}>Logout</Button>
       </Nav>
     </Wrapper>
   );
@@ -36,24 +38,24 @@ const Wrapper = styled.header`
   padding: 8px;
 `;
 
-const Logo = styled.h1`
-  font-family: "Permanent Marker", cursive;
-  font-size: 3rem;
-  color: deeppink;
-  margin: 0;
-  line-height: 1;
+// const Logo = styled.h1`
+//   font-family: "Permanent Marker", cursive;
+//   font-size: 3rem;
+//   color: deeppink;
+//   margin: 0;
+//   line-height: 1;
 
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-`;
+//   a {
+//     color: inherit;
+//     text-decoration: none;
+//   }
+// `;
 
 const Nav = styled.nav`
   display: flex;
   gap: 4px;
-  position: absolute;
-  right: 8px;
+  position: relative;
+  left: 8px;
 `;
 
 export default NavBar;

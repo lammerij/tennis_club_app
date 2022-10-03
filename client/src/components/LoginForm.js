@@ -1,11 +1,12 @@
 import React from "react";
 import { useState } from "react";
-import { Button, Input, FormField, Label } from "../styles";
+import { Button, Error, Input, FormField, Label } from "../styles";
 
 function LoginForm({ onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState([]);
 
   function handleUserName(event) {
     setUsername(event.target.value);
@@ -16,7 +17,6 @@ function LoginForm({ onLogin }) {
   }
 
   function handleSubmit(event) {
-    // debugger
     event.preventDefault();
     setIsLoading(true);
     fetch("/login", {
@@ -28,9 +28,9 @@ function LoginForm({ onLogin }) {
     }).then((response) => {
       setIsLoading(false);
       if (response.ok) {
-        response.json().then((user) => onLogin(user))
+        response.json().then((user) => onLogin(user));
       } else {
-        return null;
+        response.json().then((error) => setErrors(error.errors));
       }
     });
   }
@@ -60,6 +60,11 @@ function LoginForm({ onLogin }) {
         <Button variant="fill" color="primary" type="submit">
           {isLoading ? "Loading..." : "Login"}
         </Button>
+      </FormField>
+      <FormField>
+        {errors.map((err) => (
+          <Error key={err}>{err}</Error>
+        ))}
       </FormField>
     </form>
   );
