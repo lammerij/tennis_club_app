@@ -36,7 +36,6 @@ function ReviewList({reviews}) {
         </Review>
       ))}
       <>
-        <h2> You Have No Reviews! </h2>
       </>
     </Wrapper>
   );

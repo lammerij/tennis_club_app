@@ -7,7 +7,7 @@ import NavBar from "./components/NavBar";
 import ReviewList from "./pages/ReviewList";
 import NewReview from "./pages/NewReview";
 import Home from "./pages/Home";
-import TennisClub from "./pages/TennisClub";
+
 
 function App() {
   const [user, setUser] = useState(null);
@@ -47,13 +47,10 @@ function App() {
       <main>
         <Switch>
           <Route path="/new">
-            <NewReview user={user} clubs={clubs} reviews={reviews} />
+            <NewReview user={user} clubs={clubs} reviews={reviews} setReviews={setReviews} />
           </Route>
           <Route path="/reviews">
             <ReviewList reviews={reviews} />
-          </Route>
-          <Route path="/tennis_clubs">
-            <TennisClub clubs={clubs} />
           </Route>
           <Route path="/">
             <Home user={user} />

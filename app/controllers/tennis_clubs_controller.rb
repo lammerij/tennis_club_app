@@ -11,15 +11,6 @@ class TennisClubsController < ApplicationController
     render json: club
   end
 
-  def create
-    player = Player.find_by(id: session[:player_id])
-    club = player.tennis_clubs.create(club_params)
-    if club.valid?
-      render json: club, status: :created
-    else
-      render json: { errors: ["Please enter valid data"] }, status: :unprocessable_entity
-    end
-  end
 
   private
 

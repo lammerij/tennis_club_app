@@ -111,7 +111,8 @@ function SignUpForm({ onLogin }) {
       </FormField>
       <FormField>
         <Label htmlFor="atpRating">ATP Rating(1.0 - 4.0)</Label>
-        <Textarea
+        <Input
+          type="number"
           rows="1"
           id="atpRating"
           value={atpRating}

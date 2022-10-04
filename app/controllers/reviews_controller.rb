@@ -14,6 +14,7 @@ class ReviewsController < ApplicationController
     # byebug
     player = Player.find_by(id: session[:player_id])
     review = player.reviews.create(review_params)
+    # byebug
     if review.valid?
       render json: review, status: :created
     else
