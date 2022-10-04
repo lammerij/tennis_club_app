@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Box, Button } from "../styles";
 
-function ReviewList({clubs}) {
-  const [reviews, setReviews] = useState([]);
+function ReviewList({reviews}) {
+  // const [reviews, setReviews] = useState([]);
 
-  useEffect(() => {
-    fetch("/reviews")
-      .then((response) => response.json())
-      .then(setReviews);
-  }, []);
+  // useEffect(() => {
+  //   fetch("/reviews")
+  //     .then((response) => response.json())
+  //     .then(setReviews);
+  // }, []);
 
   return (
     <Wrapper>
@@ -22,6 +22,9 @@ function ReviewList({clubs}) {
             {review.tennis_club.location} Court Type:{" "}
             {review.tennis_club.court_type}
             <h2>{review.review}</h2>
+            <Button as={Link} to="/new">
+              Create a New Review
+            </Button>
             <p>
               &nbsp;·&nbsp;
               <cite>
@@ -34,9 +37,6 @@ function ReviewList({clubs}) {
       ))}
       <>
         <h2> You Have No Reviews! </h2>
-        <Button as={Link} to="/new">
-          Make a New Review
-        </Button>
       </>
     </Wrapper>
   );

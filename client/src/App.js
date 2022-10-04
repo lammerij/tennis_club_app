@@ -1,22 +1,35 @@
 // import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 import React, { useEffect, useState } from "react";
-import Login from './pages/Login';
+import Login from "./pages/Login";
 import { Switch, Route } from "react-router-dom";
-import NavBar from './components/NavBar';
-import ReviewList from './pages/ReviewList';
-import NewReview from './pages/NewReview';
-import TennisClubList from './pages/TennisClubList';
+import NavBar from "./components/NavBar";
+import ReviewList from "./pages/ReviewList";
+import NewReview from "./pages/NewReview";
+import Home from "./pages/Home";
 
 function App() {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(null);
+  const [clubs, setClubs] = useState([]);
+  const [reviews, setReviews] = useState([]);
 
+  useEffect(() => {
+    fetch("/reviews")
+      .then((response) => response.json())
+      .then(setReviews);
+  }, []);
 
   // const listOfClubs = clubs.map((club) => {
   //   return club
   // });
-  
-  
+
+  useEffect(() => {
+    fetch("/tennis_clubs").then((response) => {
+      if (response.ok) {
+        response.json().then((data) => setClubs(data));
+      }
+    });
+  }, []);
 
   useEffect(() => {
     // auto-login
@@ -27,7 +40,7 @@ function App() {
     });
   }, []);
 
-  if (!user) return <Login onLogin={setUser}/>
+  if (!user) return <Login onLogin={setUser} />;
 
   return (
     <>
@@ -35,13 +48,13 @@ function App() {
       <main>
         <Switch>
           <Route path="/new">
-            <NewReview user={user} clubs={clubs} />
-          </Route>
-          <Route path="/">
-            <TennisClubList/>
+            <NewReview user={user} clubs={clubs} reviews={reviews} />
           </Route>
           <Route path="/reviews">
-            <ReviewList />
+            <ReviewList reviews={reviews} />
+          </Route>
+          <Route path="/">
+            <Home user={user}/>
           </Route>
         </Switch>
       </main>

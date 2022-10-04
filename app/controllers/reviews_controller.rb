@@ -10,18 +10,17 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    player = Player.find_by(id: session[:player_id])
-    new_review = player.review.create(review_params)
-    if new_review.valid?
-      render json: new_review, status: :created
+    review = Review.create(review_params)
+    if review
+      render json: review, status: :created
     else
-      render json: { errors: "Please enter valid data" }, status: :unprocessable_entity
+      render json: { errors: ["Please enter valid data"] }, status: :unprocessable_entity
     end
   end
 
   private
 
   def review_params
-    params.permit(:text)
+    params.permit(:review, :player_id, :tennis_club_id)
   end
 end
