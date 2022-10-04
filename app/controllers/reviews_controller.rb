@@ -10,11 +10,12 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    review = Review.create(review_params)
-    if review
+    # byebug
+    review = Review.new(review_params)
+    if review.save
       render json: review, status: :created
     else
-      render json: { errors: ["Please enter valid data"] }, status: :unprocessable_entity
+      render json: { errors: "Invalid Data!" }, status: :unprocessable_entity
     end
   end
 

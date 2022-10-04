@@ -21,7 +21,7 @@ function ReviewList({reviews}) {
             <h3>{review.tennis_club.name} </h3> Location:{" "}
             {review.tennis_club.location} Court Type:{" "}
             {review.tennis_club.court_type}
-            <h2>{review.review}</h2>
+            <h2>"{review.review}"</h2>
             <Button as={Link} to="/new">
               Create a New Review
             </Button>

@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { Button, FormField, Input, Label } from "../styles";
 
 function NewReview({ user, clubs, reviews }) {
-    console.log(user);
+    // console.log(user);
   const [review, setReview] = useState("");
   const [selectedClub, setSelectedClub] = useState({});
   const history = useHistory();
@@ -40,7 +40,6 @@ function NewReview({ user, clubs, reviews }) {
       .then((response) => response.json())
       .then((newReview) => setReview([...reviews, newReview]));
     history.push("/reviews");
-    setReview("");
   }
 
   return (
@@ -50,7 +49,7 @@ function NewReview({ user, clubs, reviews }) {
         <p>Select Club:</p>
         <form onSubmit={handleSubmit}>
           <FormField>
-            <select onChange={handleChange}>{listOfClubs}</select>
+            <select value={selectedClub.id} onChange={handleChange}>{listOfClubs}</select>
             <Input
               type="text"
               id="review"

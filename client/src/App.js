@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     fetch("/reviews")
       .then((response) => response.json())
-      .then(setReviews);
+      .then((data)=> setReviews(data));
   }, []);
 
   // const listOfClubs = clubs.map((club) => {
