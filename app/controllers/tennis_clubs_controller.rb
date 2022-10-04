@@ -9,5 +9,15 @@ class TennisClubsController < ApplicationController
         render json: club
     end
 
+    def create
+        
+    end
+
+    private
+
+    def club_params
+        params.permit(:name, :location, :court_type)
+    end 
+
     
 end
