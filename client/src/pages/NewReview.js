@@ -38,7 +38,7 @@ function NewReview({ user, clubs, reviews }) {
       }),
     })
       .then((response) => response.json())
-      .then((newReview) => setReview([...reviews, newReview]));
+      .then((review) => setReview([...reviews, review]));
     history.push("/reviews");
   }
 

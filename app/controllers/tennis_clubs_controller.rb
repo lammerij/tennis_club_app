@@ -1,7 +1,7 @@
 class TennisClubsController < ApplicationController
     def index 
         clubs = TennisClub.all
-        render json: clubs, include: :reviews
+        render json: clubs
     end
 
     def show
