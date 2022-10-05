@@ -13,7 +13,7 @@ function NewReview({ user, clubs, reviews, setReviews }) {
     setReview(event.target.value);
   }
   const currentUser = user;
-  //   console.log(currentUser);
+    // console.log(currentUser);
 
   function handleChange(event) {
     const findClub = clubs.find((club) => club.id == event.target.value);

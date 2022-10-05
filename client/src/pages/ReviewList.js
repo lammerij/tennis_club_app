@@ -3,7 +3,7 @@ import styled from "styled-components";
 import ReviewCard from "../components/ReviewCard";
 
 function ReviewList({ user, reviews, deleteReviewList }) {
-  // console.log(reviews.id)
+  // console.log(reviews)
 
   const reviewsCard = reviews.map((aReview) => {
     return (

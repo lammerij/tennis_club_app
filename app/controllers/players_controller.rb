@@ -31,6 +31,7 @@ class PlayersController < ApplicationController
   end
 
   def player_params
-    params.permit(:name, :username, :city, :atp_rating, :password, :password_confirmation)
+    # byebug
+    params.permit(:name, :username, :city, :atp_rating, :password)
   end
 end

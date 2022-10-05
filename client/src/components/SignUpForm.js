@@ -35,6 +35,8 @@ function SignUpForm({ onLogin }) {
     if (
       [username, atpRating, city, password, passwordConfirmation, name].some(
         (value) => value.trim() === ""
+      ) && (
+        password === passwordConfirmation
       )
     ) {
       alert("Please Fill Out Form, Thank You!");
@@ -49,9 +51,8 @@ function SignUpForm({ onLogin }) {
       body: JSON.stringify({
         username,
         password,
-        passwordConfirmation: passwordConfirmation,
         city,
-        atpRating,
+        atp_rating: atpRating,
         name,
       }),
     }).then((response) => {

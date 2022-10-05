@@ -14,17 +14,16 @@ function NavBar({ user, setUser }) {
 
   return (
     <Wrapper>
-      <Nav>
-        <Link to="/">Home</Link>
-      </Nav>
-      <Nav>
-        <Link to="/reviews">Reviews</Link>
-      </Nav>
-
-      {/* <Logo>
+      <Logo>
         <Link to="/">Tennis Club Reviewer</Link>
-      </Logo> */}
+      </Logo>
       <Nav>
+      <Button as={Link} to="/reviews">
+          Reviews
+        </Button>
+        <Button as={Link} to="/new">
+          New Review
+        </Button>
         <Button onClick={handleLogoutClick}>Logout</Button>
       </Nav>
     </Wrapper>
@@ -38,18 +37,18 @@ const Wrapper = styled.header`
   padding: 8px;
 `;
 
-// const Logo = styled.h1`
-//   font-family: "Permanent Marker", cursive;
-//   font-size: 3rem;
-//   color: deeppink;
-//   margin: 0;
-//   line-height: 1;
+const Logo = styled.h1`
+  font-family: "Permanent Marker", cursive;
+  font-size: 3rem;
+  color: green;
+  margin: 0;
+  line-height: 1;
 
-//   a {
-//     color: inherit;
-//     text-decoration: none;
-//   }
-// `;
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+`;
 
 const Nav = styled.nav`
   display: flex;

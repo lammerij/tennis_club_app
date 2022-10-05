@@ -24,9 +24,7 @@ function ReviewCard({ aReview, user, deleteReviewList }) {
           <h3>{tennis_club.name} </h3> Location: {tennis_club.location} Court
           Type: {tennis_club.court_type}
           <h2>"{review}"</h2>
-          <Button as={Link} to="/new">
-            Create a New Review
-          </Button>
+          <Button onClick={handleReviewDelete}>Delete Review</Button>
           <p>
             &nbsp;·&nbsp;
             <cite>
@@ -36,8 +34,12 @@ function ReviewCard({ aReview, user, deleteReviewList }) {
           </p>
         </Box>
       </Review>
-
       <></>
+      <WrapperChild>
+        <Button as={Link} to="/new">
+          Create a New Review
+        </Button>
+      </WrapperChild>
     </Wrapper>
   );
 }
@@ -49,5 +51,9 @@ const Wrapper = styled.section`
 
 const Review = styled.article`
   margin-bottom: 24px;
+`;
+
+const WrapperChild = styled.div`
+  flex: 1;
 `;
 export default ReviewCard;

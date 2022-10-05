@@ -6,7 +6,14 @@ function Home({ user }) {
 
   return (
     <Wrapper>
-      <Logo>Welcome {name}</Logo>
+      <img
+        src="/images/pexels-bogdan-glisik-1405355.jpg"
+        width="750"
+        height="800"
+      ></img>
+      <WrapperChild>
+      
+      </WrapperChild>
     </Wrapper>
   );
 }
@@ -33,7 +40,7 @@ const Logo = styled.h1`
 `;
 
 const WrapperChild = styled.div`
-  flex: 1;
+  align-items: center;
 `;
 
 export default Home;
