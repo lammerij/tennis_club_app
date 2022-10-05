@@ -8,7 +8,6 @@ import ReviewList from "./pages/ReviewList";
 import NewReview from "./pages/NewReview";
 import Home from "./pages/Home";
 
-
 function App() {
   const [user, setUser] = useState(null);
   const [clubs, setClubs] = useState([]);
@@ -39,6 +38,13 @@ function App() {
     });
   }, []);
 
+  const deleteReviewList = (deletedReview) => {
+    const deletedReviews = reviews.filter(
+      (review) => review.id !== deletedReview
+    );
+    setReviews(deletedReviews);
+  };
+
   if (!user) return <Login onLogin={setUser} />;
 
   return (
@@ -47,10 +53,19 @@ function App() {
       <main>
         <Switch>
           <Route path="/new">
-            <NewReview user={user} clubs={clubs} reviews={reviews} setReviews={setReviews} />
+            <NewReview
+              user={user}
+              clubs={clubs}
+              reviews={reviews}
+              setReviews={setReviews}
+            />
           </Route>
           <Route path="/reviews">
-            <ReviewList reviews={reviews} />
+            <ReviewList
+              reviews={reviews}
+              deleteReviewList={deleteReviewList}
+              user={user}
+            />
           </Route>
           <Route path="/">
             <Home user={user} />

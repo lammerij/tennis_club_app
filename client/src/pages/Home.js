@@ -32,4 +32,8 @@ const Logo = styled.h1`
   }
 `;
 
+const WrapperChild = styled.div`
+  flex: 1;
+`;
+
 export default Home;

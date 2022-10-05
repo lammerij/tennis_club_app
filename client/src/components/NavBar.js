@@ -18,9 +18,6 @@ function NavBar({ user, setUser }) {
         <Link to="/">Home</Link>
       </Nav>
       <Nav>
-        <Link to="/tennis_clubs">Tennis Clubs</Link>
-      </Nav>
-      <Nav>
         <Link to="/reviews">Reviews</Link>
       </Nav>
 

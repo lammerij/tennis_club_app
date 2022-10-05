@@ -1,44 +1,22 @@
 // import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Box, Button } from "../styles";
+import ReviewCard from "../components/ReviewCard";
 
-function ReviewList({reviews}) {
-  // const [reviews, setReviews] = useState([]);
+function ReviewList({ user, reviews, deleteReviewList }) {
+  // console.log(reviews.id)
 
-  // useEffect(() => {
-  //   fetch("/reviews")
-  //     .then((response) => response.json())
-  //     .then(setReviews);
-  // }, []);
+  const reviewsCard = reviews.map((aReview) => {
+    return (
+      <ReviewCard
+        aReview={aReview}
+        key={aReview.id}
+        deleteReviewList={deleteReviewList}
+        user={user}
+      />
+    );
+  });
 
-  return (
-    <Wrapper>
-      {reviews.map((review) => (
-        <Review key={review.id}>
-          <Box>
-            <h1>TENNIS CLUB:</h1>
-            <h3>{review.tennis_club.name} </h3> Location:{" "}
-            {review.tennis_club.location} Court Type:{" "}
-            {review.tennis_club.court_type}
-            <h2>"{review.review}"</h2>
-            <Button as={Link} to="/new">
-              Create a New Review
-            </Button>
-            <p>
-              &nbsp;·&nbsp;
-              <cite>
-                By {review.player.name} | City: {review.player.city} | ATP
-                Rating: {review.player.atp_rating}
-              </cite>
-            </p>
-          </Box>
-        </Review>
-      ))}
-      <>
-      </>
-    </Wrapper>
-  );
+  return <Wrapper>{reviewsCard}</Wrapper>;
 }
 
 const Wrapper = styled.section`
@@ -46,8 +24,8 @@ const Wrapper = styled.section`
   margin: 40px auto;
 `;
 
-const Review = styled.article`
-  margin-bottom: 24px;
-`;
+// const ReviewCardStyle = styled.article`
+//   margin-bottom: 24px;
+// `;
 
 export default ReviewList;

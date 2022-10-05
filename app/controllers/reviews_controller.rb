@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   skip_before_action :authorize, only: :create
+
   def index
     reviews = Review.all
     render json: reviews
@@ -20,6 +21,11 @@ class ReviewsController < ApplicationController
     else
       render json: { errors: ["Please enter valid data"] }, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    review = Review.find(params[:id])
+    review.destroy
   end
 
   private
