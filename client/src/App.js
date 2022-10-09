@@ -50,7 +50,7 @@ function App() {
   }
 
   const updatedReviewList = (updatedReview) => {
-    const updatedReviews = reviews.map((r) => 
+    const updatedReviews = reviews.map((r) =>
       updatedReview.id === r.id ? updatedReview : r
     );
     setReviews(updatedReviews);

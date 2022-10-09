@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Box, Button, Input } from "../styles";
+import { Box, Button, FormField, Input } from "../styles";
 import EditReview from "../pages/EditReview";
 import { useState } from "react";
 
-function ReviewCard({ aReview, user, deleteReviewList, reviews, setReviews, updatedReviewList }) {
+function ReviewCard({ aReview, user, deleteReviewList, reviews, setReviews, editReview }) {
   const { id, player, tennis_club, review } = aReview;
   const [isEditing, setIsEditing] = useState(false);
   const [editedReview, setEditedReview] = useState();
@@ -14,7 +14,7 @@ function ReviewCard({ aReview, user, deleteReviewList, reviews, setReviews, upda
     <Wrapper>
       <Review>
         <Box>
-          <h1>TENNIS Dub:</h1>
+          <h1>TENNIS CLUB:</h1>
           <h3>{tennis_club.name} </h3> Location: {tennis_club.location} Court
           Type: {tennis_club.court_type}
           <h2>"{review}"</h2>
@@ -46,15 +46,18 @@ function ReviewCard({ aReview, user, deleteReviewList, reviews, setReviews, upda
           <h3>{tennis_club.name} </h3> Location: {tennis_club.location} Court
           Type: {tennis_club.court_type}
           <h2>"{review}"</h2>
-          <Button>Edit Review</Button>
+          <form onSubmit={handleEditSubmit}>
+          <FormField>
+          <Button type="submit">Save</Button>
           <Button onClick={() => setIsEditing(false)}>Cancel</Button>
-          <Button onClick={handleReviewDelete}>Delete Review</Button>
           <Input
             type="text"
             id={review.id}
             value={editedReview}
             onChange={handleEditChange}
           />
+          </FormField>
+          </form>
           <p>
             &nbsp;·&nbsp;
             <cite>
