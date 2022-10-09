@@ -39,16 +39,22 @@ function App() {
     });
   }, []);
 
-  function editReview(id, reviewEdit){
-    const editedReviewList = reviews.map((rev)=>{
-      if (id === rev.id){
-        return {...rev, review: reviewEdit} 
+  function editReview(id, reviewEdit) {
+    const editedReviewList = reviews.map((rev) => {
+      if (id === rev.id) {
+        return { ...rev, review: reviewEdit };
       }
-      return rev
-    })
-    setReviews(editedReviewList)
+      return rev;
+    });
+    setReviews(editedReviewList);
   }
 
+  const updatedReviewList = (updatedReview) => {
+    const updatedReviews = reviews.map((r) => 
+      updatedReview.id === r.id ? updatedReview : r
+    );
+    setReviews(updatedReviews);
+  };
 
   const deleteReviewList = (deletedReview) => {
     const deletedReviews = reviews.filter(
@@ -65,7 +71,7 @@ function App() {
       <main>
         <Switch>
           <Route path="/reviews/:id/edit">
-            <EditReview reviews={reviews}/>
+            <EditReview reviews={reviews} />
           </Route>
           <Route path="/new">
             <NewReview
@@ -82,6 +88,7 @@ function App() {
               user={user}
               setReviews={setReviews}
               editReview={editReview}
+              updatedReviewList={updatedReviewList}
             />
           </Route>
           <Route path="/">

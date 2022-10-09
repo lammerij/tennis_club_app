@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import ReviewCard from "../components/ReviewCard";
 
-function ReviewList({ user, reviews, deleteReviewList, setReviews, editReview }) {
+function ReviewList({ user, reviews, deleteReviewList, setReviews, editReview, updatedReviewList }) {
 
 
   const reviewsCard = reviews.map((aReview) => {
@@ -15,6 +15,7 @@ function ReviewList({ user, reviews, deleteReviewList, setReviews, editReview })
         setReviews={setReviews}
         reviews={reviews}
         editReview={editReview}
+        updatedReviewList={updatedReviewList}
       />
     );
   });
