@@ -1,9 +1,9 @@
-// import { useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import ReviewCard from "../components/ReviewCard";
 
-function ReviewList({ user, reviews, deleteReviewList }) {
-  // console.log(reviews)
+function ReviewList({ user, reviews, deleteReviewList, setReviews, editReview }) {
+
 
   const reviewsCard = reviews.map((aReview) => {
     return (
@@ -12,6 +12,9 @@ function ReviewList({ user, reviews, deleteReviewList }) {
         key={aReview.id}
         deleteReviewList={deleteReviewList}
         user={user}
+        setReviews={setReviews}
+        reviews={reviews}
+        editReview={editReview}
       />
     );
   });

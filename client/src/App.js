@@ -7,6 +7,7 @@ import NavBar from "./components/NavBar";
 import ReviewList from "./pages/ReviewList";
 import NewReview from "./pages/NewReview";
 import Home from "./pages/Home";
+import EditReview from "./pages/EditReview";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -38,6 +39,17 @@ function App() {
     });
   }, []);
 
+  function editReview(id, reviewEdit){
+    const editedReviewList = reviews.map((rev)=>{
+      if (id === rev.id){
+        return {...rev, review: reviewEdit} 
+      }
+      return rev
+    })
+    setReviews(editedReviewList)
+  }
+
+
   const deleteReviewList = (deletedReview) => {
     const deletedReviews = reviews.filter(
       (review) => review.id !== deletedReview
@@ -52,6 +64,9 @@ function App() {
       <NavBar user={user} setUser={setUser} />
       <main>
         <Switch>
+          <Route path="/reviews/:id/edit">
+            <EditReview reviews={reviews}/>
+          </Route>
           <Route path="/new">
             <NewReview
               user={user}
@@ -65,6 +80,8 @@ function App() {
               reviews={reviews}
               deleteReviewList={deleteReviewList}
               user={user}
+              setReviews={setReviews}
+              editReview={editReview}
             />
           </Route>
           <Route path="/">
