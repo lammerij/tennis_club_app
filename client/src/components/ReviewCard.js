@@ -2,13 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Box, Button, FormField, Input } from "../styles";
-import EditReview from "../pages/EditReview";
 import { useState } from "react";
 
-function ReviewCard({ aReview, user, deleteReviewList, reviews, setReviews, editReview }) {
+function ReviewCard({
+  aReview,
+  user,
+  deleteReviewList,
+  reviews,
+  setReviews,
+  editReview,
+}) {
   const { id, player, tennis_club, review } = aReview;
   const [isEditing, setIsEditing] = useState(false);
-  const [editedReview, setEditedReview] = useState();
+  const [editedReview, setEditedReview] = useState(review);
 
   const viewTemplate = (
     <Wrapper>
@@ -47,16 +53,16 @@ function ReviewCard({ aReview, user, deleteReviewList, reviews, setReviews, edit
           Type: {tennis_club.court_type}
           <h2>"{review}"</h2>
           <form onSubmit={handleEditSubmit}>
-          <FormField>
-          <Button type="submit">Save</Button>
-          <Button onClick={() => setIsEditing(false)}>Cancel</Button>
-          <Input
-            type="text"
-            id={review.id}
-            value={editedReview}
-            onChange={handleEditChange}
-          />
-          </FormField>
+            <FormField>
+              <Button type="submit">Save</Button>
+              <Button onClick={() => setIsEditing(false)}>Cancel</Button>
+              <Input
+                type="text"
+                id={review.id}
+                value={editedReview}
+                onChange={handleEditChange}
+              />
+            </FormField>
           </form>
           <p>
             &nbsp;·&nbsp;
@@ -76,42 +82,24 @@ function ReviewCard({ aReview, user, deleteReviewList, reviews, setReviews, edit
     </Wrapper>
   );
 
-  // function handleEditClick() {
-  //   // debugger;
-  //   const reviewForEdit = reviews.find((rev) => rev.id === id);
-  //   // console.log(reviewForEdit)
-  // }
-
-  // function handleEditReview(event) {
-  //   event.preventDefault();
-  //   const updatedReview = { review: review };
-  //   fetch(`/reviews/${aReview.id}`, {
-  //     method: "PATCH",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       body: JSON.stringify(updatedReview),
-  //     }
-  //       .then((response) => response.json())
-  //       .then((data) => console.log(data)),
-  //   });
-  // }
-
   function handleEditChange(event) {
     setEditedReview(event.target.value);
   }
+
+
 
   function handleEditSubmit(event) {
     event.preventDefault();
     const updatedReview = { review: review };
     fetch(`/reviews/${id}`, {
-      method: "PATCH",
+      method: 'PATCH',
+      body: JSON.stringify(updatedReview),
       headers: {
-        "Content-Type": "application/json",
-        body: JSON.stringify(updatedReview),
-      }
-        .then((response) => response.json())
-        .then((data) => console.log(data)),
-    });
+        'Content-type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data));
   }
 
   function handleReviewDelete() {
@@ -124,7 +112,7 @@ function ReviewCard({ aReview, user, deleteReviewList, reviews, setReviews, edit
       deleteReviewList(id);
     });
   }
-  return <li>{isEditing ? editTemplate : viewTemplate}</li>;
+  return <ul>{isEditing ? editTemplate : viewTemplate}</ul>;
 }
 
 const Wrapper = styled.section`

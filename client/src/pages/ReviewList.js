@@ -1,10 +1,14 @@
-import { useState } from "react";
 import styled from "styled-components";
 import ReviewCard from "../components/ReviewCard";
 
-function ReviewList({ user, reviews, deleteReviewList, setReviews, editReview, updatedReviewList }) {
-
-
+function ReviewList({
+  user,
+  reviews,
+  deleteReviewList,
+  setReviews,
+  editReview,
+  updatedReviewList,
+}) {
   const reviewsCard = reviews.map((aReview) => {
     return (
       <ReviewCard

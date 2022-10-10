@@ -7,7 +7,6 @@ import NavBar from "./components/NavBar";
 import ReviewList from "./pages/ReviewList";
 import NewReview from "./pages/NewReview";
 import Home from "./pages/Home";
-import EditReview from "./pages/EditReview";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -70,9 +69,6 @@ function App() {
       <NavBar user={user} setUser={setUser} />
       <main>
         <Switch>
-          <Route path="/reviews/:id/edit">
-            <EditReview reviews={reviews} />
-          </Route>
           <Route path="/new">
             <NewReview
               user={user}
