@@ -23,10 +23,11 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    review = Review.find(params { :id })
+    # byebug
+    review = Review.find(params [:id])
     if review
       review.update(review_params)
-      render json: review, status: :created
+      render json: review
     else
       render json: { error: "Review not found" }, status: :not_found
     end

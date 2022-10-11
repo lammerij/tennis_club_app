@@ -4,11 +4,9 @@ import styled from "styled-components";
 import { Button, FormField, Input, Label } from "../styles";
 
 function NewReview({ user, clubs, reviews, setReviews }) {
-  // console.log(clubs);
   const [review, setReview] = useState("");
   const [selectedClub, setSelectedClub] = useState({});
   const history = useHistory();
-  //   console.log(selectedClub);
   function handleReviewSubmit(event) {
     setReview(event.target.value);
   }

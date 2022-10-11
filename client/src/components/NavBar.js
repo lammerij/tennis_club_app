@@ -18,6 +18,12 @@ function NavBar({ user, setUser }) {
         <Link to="/">Tennis Club Reviewer</Link>
       </Logo>
       <Nav>
+      <Button as={Link} to="/tennis_clubs">
+          Clubs
+        </Button>
+        <Button as={Link} to="/newtennis_club">
+          New Club
+        </Button>
       <Button as={Link} to="/reviews">
           Reviews
         </Button>

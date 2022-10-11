@@ -86,16 +86,20 @@ function ReviewCard({
     setEditedReview(event.target.value);
   }
 
-
-
   function handleEditSubmit(event) {
     event.preventDefault();
-    const updatedReview = { review: review };
+    const updatedReview = {
+      review: review,
+      id: id,
+      player: player,
+      tennis_club: tennis_club,
+    };
+    console.log(updatedReview);
     fetch(`/reviews/${id}`, {
-      method: 'PATCH',
+      method: "PATCH",
       body: JSON.stringify(updatedReview),
       headers: {
-        'Content-type': 'application/json',
+        "Content-type": "application/json",
       },
     })
       .then((response) => response.json())

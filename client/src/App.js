@@ -7,6 +7,8 @@ import NavBar from "./components/NavBar";
 import ReviewList from "./pages/ReviewList";
 import NewReview from "./pages/NewReview";
 import Home from "./pages/Home";
+import ClubList from "./pages/ClubList";
+import NewClub from "./pages/NewClub";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -77,6 +79,9 @@ function App() {
               setReviews={setReviews}
             />
           </Route>
+          <Route path="/newtennis_club">
+            <NewClub clubs={clubs} setClubs={setClubs}/>
+          </Route>
           <Route path="/reviews">
             <ReviewList
               reviews={reviews}
@@ -86,6 +91,9 @@ function App() {
               editReview={editReview}
               updatedReviewList={updatedReviewList}
             />
+          </Route>
+          <Route path="/tennis_clubs">
+            <ClubList clubs={clubs} setClubs={setClubs}/>
           </Route>
           <Route path="/">
             <Home user={user} />
