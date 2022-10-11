@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Box, Button, FormField, Input } from "../styles";
 import { useState } from "react";
+import { useHistory } from "react-router";
 
 function ReviewCard({
   aReview,
@@ -10,11 +11,12 @@ function ReviewCard({
   deleteReviewList,
   reviews,
   setReviews,
-  editReview,
+  updatedReviewsList
 }) {
   const { id, player, tennis_club, review } = aReview;
   const [isEditing, setIsEditing] = useState(false);
   const [editedReview, setEditedReview] = useState(review);
+  const history = useHistory();
 
   const viewTemplate = (
     <Wrapper>
@@ -89,12 +91,9 @@ function ReviewCard({
   function handleEditSubmit(event) {
     event.preventDefault();
     const updatedReview = {
-      review: review,
-      id: id,
-      player: player,
-      tennis_club: tennis_club,
+      review: editedReview,
     };
-    console.log(updatedReview);
+    // console.log(updatedReview);
     fetch(`/reviews/${id}`, {
       method: "PATCH",
       body: JSON.stringify(updatedReview),
@@ -103,7 +102,10 @@ function ReviewCard({
       },
     })
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        updatedReviewsList(data);
+        setIsEditing(false)
+      });
   }
 
   function handleReviewDelete() {

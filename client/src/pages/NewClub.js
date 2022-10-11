@@ -22,11 +22,71 @@ function NewClub({ clubs, setClubs }) {
     setCourtType(event.target.value);
   }
 
+  function handleNewClubSubmit(event) {
+    event.preventDefault();
+    if ([name, location, courtType].some((value) => value.trim() === "")) {
+      alert("Please Fill Out Form Completely, Thank You!");
+      return null;
+    }
+
+    const newClub = {
+      name: name,
+      location: location,
+      court_type: courtType,
+    };
+    // debugger
+    fetch("/tennis_clubs", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newClub),
+    })
+      .then((response) => response.json())
+      .then((newClub) => {
+        setClubs([...clubs, newClub]);
+        setName("");
+        setLocation("");
+        setCourtType("");
+      });
+    history.push("/tennis_clubs");
+  }
+
   return (
     <Wrapper>
-
+      <Label>Add A Club!</Label>
+      <WrapperChild>
+        <form onSubmit={handleNewClubSubmit}>
+          <FormField>
+            Name:
+            <Input
+              type="text"
+              id="name"
+              value={name}
+              onChange={handleNameChange}
+            />
+            Location:
+            <Input
+              type="text"
+              id="location"
+              value={location}
+              onChange={handleLocationChange}
+            />
+            Court Type:
+            <Input
+              type="text"
+              id="courtType"
+              value={courtType}
+              onChange={handleCourtTypeChange}
+            />
+            <Button color="primary" type="submit">
+              Submit
+            </Button>
+          </FormField>
+        </form>
+      </WrapperChild>
     </Wrapper>
-  )
+  );
 }
 const Wrapper = styled.section`
   max-width: 1000px;

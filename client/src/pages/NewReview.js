@@ -7,6 +7,7 @@ function NewReview({ user, clubs, reviews, setReviews }) {
   const [review, setReview] = useState("");
   const [selectedClub, setSelectedClub] = useState({});
   const history = useHistory();
+
   function handleReviewSubmit(event) {
     setReview(event.target.value);
   }

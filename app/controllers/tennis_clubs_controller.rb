@@ -13,8 +13,7 @@ class TennisClubsController < ApplicationController
 
   def create
     # byebug
-    player = Player.find_by(id: session[:player_id])
-    club = player.clubs.create(club_params)
+    club = TennisClub.create(club_params)
     if club.valid?
       render json: club, status: :created
     else

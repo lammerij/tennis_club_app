@@ -40,22 +40,12 @@ function App() {
     });
   }, []);
 
-  function editReview(id, reviewEdit) {
-    const editedReviewList = reviews.map((rev) => {
-      if (id === rev.id) {
-        return { ...rev, review: reviewEdit };
-      }
-      return rev;
-    });
-    setReviews(editedReviewList);
-  }
-
-  const updatedReviewList = (updatedReview) => {
-    const updatedReviews = reviews.map((r) =>
-      updatedReview.id === r.id ? updatedReview : r
+  function updatedReviewsList(updatedReview) {
+    const updateAll = reviews.map((rev) => 
+      rev.id == updatedReview.id ? updatedReview : rev
     );
-    setReviews(updatedReviews);
-  };
+    setReviews(updateAll);
+  }
 
   const deleteReviewList = (deletedReview) => {
     const deletedReviews = reviews.filter(
@@ -80,7 +70,7 @@ function App() {
             />
           </Route>
           <Route path="/newtennis_club">
-            <NewClub clubs={clubs} setClubs={setClubs}/>
+            <NewClub clubs={clubs} setClubs={setClubs} />
           </Route>
           <Route path="/reviews">
             <ReviewList
@@ -88,12 +78,11 @@ function App() {
               deleteReviewList={deleteReviewList}
               user={user}
               setReviews={setReviews}
-              editReview={editReview}
-              updatedReviewList={updatedReviewList}
+              updatedReviewsList={updatedReviewsList}
             />
           </Route>
           <Route path="/tennis_clubs">
-            <ClubList clubs={clubs} setClubs={setClubs}/>
+            <ClubList clubs={clubs} setClubs={setClubs} />
           </Route>
           <Route path="/">
             <Home user={user} />

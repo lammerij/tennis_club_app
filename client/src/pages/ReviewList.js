@@ -6,8 +6,7 @@ function ReviewList({
   reviews,
   deleteReviewList,
   setReviews,
-  editReview,
-  updatedReviewList,
+  updatedReviewsList
 }) {
   const reviewsCard = reviews.map((aReview) => {
     return (
@@ -18,8 +17,7 @@ function ReviewList({
         user={user}
         setReviews={setReviews}
         reviews={reviews}
-        editReview={editReview}
-        updatedReviewList={updatedReviewList}
+        updatedReviewsList={updatedReviewsList}
       />
     );
   });

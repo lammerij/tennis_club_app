@@ -16,7 +16,7 @@ function ClubCard({ club, setClubs }) {
         </Box>
       </Club>
       <WrapperChild>
-        <Button as={Link} to="/newclub">
+        <Button as={Link} to="/newtennis_club">
           Add A Club
         </Button>
       </WrapperChild>
