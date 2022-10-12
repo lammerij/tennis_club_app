@@ -4,6 +4,8 @@
 
 Create an account to login and leave reviews for Tennis Clubs you've patroned. This app utilizes React/JS for the frontend, and Ruby/Rails for the backend.
 
+![Alt text] (client/public/images/Screen Shot 2022-10-12 at 2.52.37 PM.png)
+
 ## Requirements
 
 - Ruby 2.7.4
