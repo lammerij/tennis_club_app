@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-function Home({ user }) {
-  const { name } = user;
-
+function Home() {
   return (
     <Wrapper>
       <img
@@ -11,9 +9,6 @@ function Home({ user }) {
         width="750"
         height="800"
       ></img>
-      <WrapperChild>
-      
-      </WrapperChild>
     </Wrapper>
   );
 }

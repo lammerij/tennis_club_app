@@ -1,13 +1,12 @@
 class PlayersController < ApplicationController
-    skip_before_action :authorize, only: :create
+    skip_before_action :authorize, only: [:create]
   def index
     players = Player.all
     render json: players
   end
 
   def show
-    player = Player.find_by(id: session[:player_id])
-    render json: player
+    render json: @current_user
   end
 
   def create

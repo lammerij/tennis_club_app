@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  skip_before_action :authorize, only: [:create, :update, :delete]
+  skip_before_action :authorize, only: [:create]
 
   def index
     reviews = Review.all
@@ -12,7 +12,6 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    # byebug
     player = Player.find_by(id: session[:player_id])
     review = player.reviews.create(review_params)
     if review.valid?
@@ -34,6 +33,7 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    # byebug
     review = Review.find(params[:id])
     review.destroy
   end

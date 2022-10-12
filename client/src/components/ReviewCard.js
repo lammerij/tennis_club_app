@@ -17,6 +17,7 @@ function ReviewCard({
   const [isEditing, setIsEditing] = useState(false);
   const [editedReview, setEditedReview] = useState(review);
   const history = useHistory();
+  // console.log(aReview.player.id)
 
   const viewTemplate = (
     <Wrapper>
@@ -26,8 +27,11 @@ function ReviewCard({
           <h3>{tennis_club.name} </h3> Location: {tennis_club.location} Court
           Type: {tennis_club.court_type}
           <h2>"{review}"</h2>
+          {user.id === aReview.player.id &&(<>
           <Button onClick={() => setIsEditing(true)}>Edit Review</Button>
           <Button onClick={handleReviewDelete}>Delete Review</Button>
+          </>)}
+   
           <p>
             &nbsp;·&nbsp;
             <cite>
@@ -87,6 +91,10 @@ function ReviewCard({
   function handleEditChange(event) {
     setEditedReview(event.target.value);
   }
+
+  // function handleDeleteReview(user, review){
+  //   if (user.id == review.user
+  // }
 
   function handleEditSubmit(event) {
     event.preventDefault();

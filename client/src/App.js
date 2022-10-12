@@ -16,19 +16,15 @@ function App() {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch("/reviews").then((response) => {
-      if (response.ok) {
-        response.json().then((review) => setReviews(review));
-      }
-    });
+    fetch("/reviews")
+      .then((response) => response.json())
+      .then((review) => setReviews(review));
   }, []);
 
   useEffect(() => {
-    fetch("/tennis_clubs").then((response) => {
-      if (response.ok) {
-        response.json().then((club) => setClubs(club));
-      }
-    });
+    fetch("/tennis_clubs")
+      .then((response) => response.json())
+      .then((club) => setClubs(club));
   }, []);
 
   useEffect(() => {
@@ -41,7 +37,7 @@ function App() {
   }, []);
 
   function updatedReviewsList(updatedReview) {
-    const updateAll = reviews.map((rev) => 
+    const updateAll = reviews.map((rev) =>
       rev.id == updatedReview.id ? updatedReview : rev
     );
     setReviews(updateAll);

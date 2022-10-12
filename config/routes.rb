@@ -1,15 +1,21 @@
 Rails.application.routes.draw do
-  resources :reviews
-  resources :players
-  resources :tennis_clubs
-  post "/signup", to: "players#create"
+  # resources :reviews
+  # resources :players
+  # resources :tennis_clubs
+
   get "/me", to: "players#show"
-  post "/login", to: "sessions#create"
-  delete "/logout", to: "sessions#destroy"
   get "/reviews", to: "reviews#index"
-  post "/reviews", to: "reviews#create"
   get "/tennis_clubs", to: "tennis_clubs#index"
+
+  post "/signup", to: "players#create"
+  post "/login", to: "sessions#create"
+  post "/reviews", to: "reviews#create"
   post "/tennis_clubs", to: "tennis_clubs#create"
+
+  patch "/reviews/:id", to: "reviews#update"
+
+  delete "/logout", to: "sessions#destroy"
+  delete "/reviews/:id", to: "reviews#destroy"
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
