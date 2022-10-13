@@ -17,13 +17,13 @@ function App() {
   console.log(user)
 
   useEffect(() => {
-    fetch("/reviews")
+    fetch("/api/reviews")
       .then((response) => response.json())
       .then((review) => setReviews(review));
   }, []);
 
   useEffect(() => {
-    fetch("/tennis_clubs")
+    fetch("/api/tennis_clubs")
       .then((response) => response.json())
       .then((club) => setClubs(club));
   }, []);
