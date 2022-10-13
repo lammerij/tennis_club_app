@@ -14,6 +14,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [clubs, setClubs] = useState([]);
   const [reviews, setReviews] = useState([]);
+  console.log(user)
 
   useEffect(() => {
     fetch("/reviews")
