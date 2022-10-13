@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import ReviewCard from "../components/ReviewCard";
+import {Button} from "../styles"
 
 function ReviewList({
   user,
   reviews,
   deleteReviewList,
   setReviews,
-  updatedReviewsList
+  updatedReviewsList,
+  clubs
 }) {
   const reviewsCard = reviews.map((aReview) => {
     return (
@@ -18,6 +20,7 @@ function ReviewList({
         setReviews={setReviews}
         reviews={reviews}
         updatedReviewsList={updatedReviewsList}
+        clubs={clubs}
       />
     );
   });

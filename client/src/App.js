@@ -17,13 +17,13 @@ function App() {
   console.log(user)
 
   useEffect(() => {
-    fetch("/api/reviews")
+    fetch("/reviews")
       .then((response) => response.json())
       .then((review) => setReviews(review));
   }, []);
 
   useEffect(() => {
-    fetch("/api/tennis_clubs")
+    fetch("/tennis_clubs")
       .then((response) => response.json())
       .then((club) => setClubs(club));
   }, []);
@@ -76,6 +76,7 @@ function App() {
               user={user}
               setReviews={setReviews}
               updatedReviewsList={updatedReviewsList}
+              clubs={clubs}
             />
           </Route>
           <Route path="/tennis_clubs">

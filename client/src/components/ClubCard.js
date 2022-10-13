@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { Box, Button } from "../styles";
-import {Link} from 'react-router-dom'
+import { Box } from "../styles";
 
 function ClubCard({ club, setClubs }) {
   const { id, name, court_type, location } = club;
+
   return (
     <Wrapper>
       <Club>
@@ -15,11 +15,6 @@ function ClubCard({ club, setClubs }) {
           <h5>Location: {location}</h5>
         </Box>
       </Club>
-      <WrapperChild>
-        <Button as={Link} to="/newtennis_club">
-          Add A Club
-        </Button>
-      </WrapperChild>
     </Wrapper>
   );
 }

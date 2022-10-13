@@ -11,13 +11,27 @@ function ReviewCard({
   deleteReviewList,
   reviews,
   setReviews,
-  updatedReviewsList
+  updatedReviewsList,
+  clubs,
 }) {
   const { id, player, tennis_club, review } = aReview;
   const [isEditing, setIsEditing] = useState(false);
   const [editedReview, setEditedReview] = useState(review);
+  const [selectedClub, setSelectedClub] = useState({});
   const history = useHistory();
   // console.log(aReview.player.id)
+
+  function handleChange(event) {
+    const findClub = clubs.find((club) => club.id == event.target.value);
+    setSelectedClub(findClub);
+  }
+  const listOfClubs = clubs.map((club) => {
+    return (
+      <option value={club.id} key={club.id}>
+        {club.name}
+      </option>
+    );
+  });
 
   const viewTemplate = (
     <Wrapper>
@@ -27,11 +41,12 @@ function ReviewCard({
           <h3>{tennis_club.name} </h3> Location: {tennis_club.location} Court
           Type: {tennis_club.court_type}
           <h2>"{review}"</h2>
-          {user.id === aReview.player.id &&(<>
-          <Button onClick={() => setIsEditing(true)}>Edit Review</Button>
-          <Button onClick={handleReviewDelete}>Delete Review</Button>
-          </>)}
-   
+          {user.id === aReview.player.id && (
+            <>
+              <Button onClick={() => setIsEditing(true)}>Edit Review</Button>
+              <Button onClick={handleReviewDelete}>Delete Review</Button>
+            </>
+          )}
           <p>
             &nbsp;·&nbsp;
             <cite>
@@ -112,7 +127,7 @@ function ReviewCard({
       .then((response) => response.json())
       .then((data) => {
         updatedReviewsList(data);
-        setIsEditing(false)
+        setIsEditing(false);
       });
   }
 
