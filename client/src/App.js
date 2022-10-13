@@ -17,20 +17,20 @@ function App() {
   console.log(user)
 
   useEffect(() => {
-    fetch("/reviews")
+    fetch("/API/reviews")
       .then((response) => response.json())
       .then((review) => setReviews(review));
   }, []);
 
   useEffect(() => {
-    fetch("/tennis_clubs")
+    fetch("/API/tennis_clubs")
       .then((response) => response.json())
       .then((club) => setClubs(club));
   }, []);
 
   useEffect(() => {
     // auto-login
-    fetch("/me").then((response) => {
+    fetch("/API/me").then((response) => {
       if (response.ok) {
         response.json().then((user) => setUser(user));
       }
