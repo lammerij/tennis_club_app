@@ -15,7 +15,6 @@ function App() {
   const [clubs, setClubs] = useState([]);
   const [reviews, setReviews] = useState([]);
 
-
   useEffect(() => {
     fetch("/reviews")
       .then((response) => response.json())
@@ -68,7 +67,6 @@ function App() {
               user={user}
               setReviews={setReviews}
               updatedReviewsList={updatedReviewsList}
-              clubs={clubs}
             />
           </Route>
           <Route path="/tennis_clubs">
