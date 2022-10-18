@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { useHistory } from "react-router";
 import styled from "styled-components";
-import { Button, FormField, Input, Label } from "../styles";
+import { Button, Error, FormField, Input, Label } from "../styles";
 
 function NewReview({ user, clubs, reviews, setReviews }) {
   const [review, setReview] = useState("");
   const [selectedClub, setSelectedClub] = useState({});
+  const [errors, setErrors] = useState([]);
+  console.log(errors);
+
   const history = useHistory();
 
   function handleReviewSubmit(event) {
@@ -28,10 +31,6 @@ function NewReview({ user, clubs, reviews, setReviews }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    if ([review].some((value) => value.trim() === "")) {
-      alert("Please Fill Out Form, Thank You!");
-      return null;
-    }
 
     const newReview = {
       review: review,
@@ -44,13 +43,19 @@ function NewReview({ user, clubs, reviews, setReviews }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newReview),
-    })
-      .then((response) => response.json())
-      .then((newReview) => {
-        setReviews([...reviews, newReview]);
-        setReview("");
-      });
-    history.push("/reviews");
+    }).then((response) => {
+      if (response.ok) {
+        response
+          .json()
+          .then(
+            (newReview) => setReviews([...reviews, newReview]),
+            setReview(""),
+            history.push("/reviews")
+          );
+      } else {
+        response.json().then((error) => setErrors(error.errors));
+      }
+    });
   }
   return (
     <Wrapper>
@@ -71,6 +76,11 @@ function NewReview({ user, clubs, reviews, setReviews }) {
             <Button color="primary" type="submit">
               Submit
             </Button>
+          </FormField>
+          <FormField>
+            {errors.map((err) => (
+              <Error key={err}>{err}</Error>
+            ))}
           </FormField>
         </form>
       </WrapperChild>

@@ -1,14 +1,15 @@
 import React from "react";
 import { useState } from "react";
-import { Button, Input, FormField, Label } from "../styles";
+import { Button, Input, FormField, Label, Error } from "../styles";
 
 function SignUpForm({ onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [city, setCity] = useState("");
-  const [atpRating, setAtpRating] = useState(0);
+  const [atpRating, setAtpRating] = useState();
   const [name, setName] = useState("");
+  const [errors, setErrors] = useState([])
   const [isLoading, setIsLoading] = useState(false);
 
   function handleUserNameChange(event) {
@@ -60,7 +61,7 @@ function SignUpForm({ onLogin }) {
       if (response.ok) {
         response.json().then((user) => onLogin(user));
       } else {
-        return null;
+        response.json().then((error) => setErrors(error.errors));
       }
     });
   }
@@ -123,6 +124,11 @@ function SignUpForm({ onLogin }) {
       <FormField>
         <Button type="submit">{isLoading ? "Loading..." : "Sign Up"}</Button>
       </FormField>
+      <FormField>
+            {errors.map((err) => (
+              <Error key={err}>{err}</Error>
+            ))}
+          </FormField>
     </form>
   );
 }

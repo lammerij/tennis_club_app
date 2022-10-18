@@ -17,7 +17,7 @@ class TennisClubsController < ApplicationController
     if club.valid?
       render json: club, status: :created
     else
-      render json: { errors: ["Please enter valid data"] }, status: :unprocessable_entity
+      render json: { errors: ["Please fill out all fields"] }, status: :unprocessable_entity
     end
   end
 

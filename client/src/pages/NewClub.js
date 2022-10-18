@@ -2,12 +2,13 @@ import React from "react";
 import { useState } from "react";
 import { useHistory } from "react-router";
 import styled from "styled-components";
-import { Button, FormField, Input, Label } from "../styles";
+import { Button, FormField, Input, Label, Error } from "../styles";
 
 function NewClub({ clubs, setClubs }) {
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [courtType, setCourtType] = useState("");
+  const [errors, setErrors] = useState([]);
   const history = useHistory();
 
   function handleNameChange(event) {
@@ -24,10 +25,6 @@ function NewClub({ clubs, setClubs }) {
 
   function handleNewClubSubmit(event) {
     event.preventDefault();
-    if ([name, location, courtType].some((value) => value.trim() === "")) {
-      alert("Please Fill Out Form Completely, Thank You!");
-      return null;
-    }
 
     const newClub = {
       name: name,
@@ -41,15 +38,21 @@ function NewClub({ clubs, setClubs }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newClub),
-    })
-      .then((response) => response.json())
-      .then((newClub) => {
-        setClubs([...clubs, newClub]);
-        setName("");
-        setLocation("");
-        setCourtType("");
-      });
-    history.push("/tennis_clubs");
+    }).then((response) => {
+      if (response.ok) {
+        response
+          .json()
+          .then(
+            (newClub) => setClubs([...clubs, newClub]),
+            setName(""),
+            setLocation(""),
+            setCourtType(""),
+            history.push("/reviews")
+          );
+      } else {
+        response.json().then((error) => setErrors(error.errors));
+      }
+    });
   }
 
   return (
@@ -82,6 +85,11 @@ function NewClub({ clubs, setClubs }) {
             <Button color="primary" type="submit">
               Submit
             </Button>
+          </FormField>
+          <FormField>
+            {errors.map((err) => (
+              <Error key={err}>{err}</Error>
+            ))}
           </FormField>
         </form>
       </WrapperChild>

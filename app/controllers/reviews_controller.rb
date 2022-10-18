@@ -17,7 +17,7 @@ class ReviewsController < ApplicationController
     if review.valid?
       render json: review, status: :created
     else
-      render json: { errors: ["Please enter valid data"] }, status: :unprocessable_entity
+      render json: { errors: ["Review must be more than 10 characters."] }, status: :unprocessable_entity
     end
   end
 
