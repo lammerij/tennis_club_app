@@ -8,7 +8,7 @@ Create an account to login and leave reviews for Tennis Clubs you've patroned. T
 
 ## Requirements
 
-- Ruby 2.7.4
+- Ruby 2.7.6
 - NodeJS (v16), and npm
 
 
