@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import ReviewCard from "../components/ReviewCard";
-import {Button} from "../styles"
 
 function ReviewList({
   user,

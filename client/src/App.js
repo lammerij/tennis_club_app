@@ -14,28 +14,20 @@ function App() {
   const [user, setUser] = useState(null);
   const [clubs, setClubs] = useState([]);
   const [reviews, setReviews] = useState([]);
-  console.log(user)
+
 
   useEffect(() => {
-    fetch("/API/reviews")
+    fetch("/reviews")
       .then((response) => response.json())
       .then((review) => setReviews(review));
   }, []);
 
   useEffect(() => {
-    fetch("/API/tennis_clubs")
+    fetch("/tennis_clubs")
       .then((response) => response.json())
       .then((club) => setClubs(club));
   }, []);
 
-  useEffect(() => {
-    // auto-login
-    fetch("/API/me").then((response) => {
-      if (response.ok) {
-        response.json().then((user) => setUser(user));
-      }
-    });
-  }, []);
 
   function updatedReviewsList(updatedReview) {
     const updateAll = reviews.map((rev) =>

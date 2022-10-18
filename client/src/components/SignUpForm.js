@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Button, Input, FormField, Label, Textarea } from "../styles";
+import { Button, Input, FormField, Label } from "../styles";
 
 function SignUpForm({ onLogin }) {
   const [username, setUsername] = useState("");

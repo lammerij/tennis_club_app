@@ -28,8 +28,4 @@ const Club = styled.article`
   margin-bottom: 24px;
 `;
 
-const WrapperChild = styled.div`
-  flex: 1;
-`;
-
 export default ClubCard;

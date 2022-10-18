@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Box, Button, FormField, Input } from "../styles";
 import { useState } from "react";
-import { useHistory } from "react-router";
 
 function ReviewCard({
   aReview,
@@ -17,21 +16,6 @@ function ReviewCard({
   const { id, player, tennis_club, review } = aReview;
   const [isEditing, setIsEditing] = useState(false);
   const [editedReview, setEditedReview] = useState(review);
-  const [selectedClub, setSelectedClub] = useState({});
-  const history = useHistory();
-  // console.log(aReview.player.id)
-
-  function handleChange(event) {
-    const findClub = clubs.find((club) => club.id == event.target.value);
-    setSelectedClub(findClub);
-  }
-  const listOfClubs = clubs.map((club) => {
-    return (
-      <option value={club.id} key={club.id}>
-        {club.name}
-      </option>
-    );
-  });
 
   const viewTemplate = (
     <Wrapper>
@@ -106,10 +90,6 @@ function ReviewCard({
   function handleEditChange(event) {
     setEditedReview(event.target.value);
   }
-
-  // function handleDeleteReview(user, review){
-  //   if (user.id == review.user
-  // }
 
   function handleEditSubmit(event) {
     event.preventDefault();
