@@ -9,7 +9,7 @@ function SignUpForm({ onLogin }) {
   const [city, setCity] = useState("");
   const [atpRating, setAtpRating] = useState();
   const [name, setName] = useState("");
-  const [errors, setErrors] = useState([])
+  const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   function handleUserNameChange(event) {
@@ -36,9 +36,8 @@ function SignUpForm({ onLogin }) {
     if (
       [username, atpRating, city, password, passwordConfirmation, name].some(
         (value) => value.trim() === ""
-      ) && (
-        password === passwordConfirmation
-      )
+      ) &&
+      password === passwordConfirmation
     ) {
       alert("Please Fill Out Form, Thank You!");
       return null;
@@ -125,10 +124,10 @@ function SignUpForm({ onLogin }) {
         <Button type="submit">{isLoading ? "Loading..." : "Sign Up"}</Button>
       </FormField>
       <FormField>
-            {errors.map((err) => (
-              <Error key={err}>{err}</Error>
-            ))}
-          </FormField>
+        {errors.map((err) => (
+          <Error key={err}>{err}</Error>
+        ))}
+      </FormField>
     </form>
   );
 }

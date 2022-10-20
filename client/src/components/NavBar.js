@@ -27,7 +27,7 @@ function NavBar({ user, setUser }) {
         <Button as={Link} to="/reviews">
           Reviews
         </Button>
-        <Button as={Link} to="/new">
+        <Button as={Link} to="/newreview">
           New Review
         </Button>
         <Button onClick={handleLogoutClick}>Logout</Button>

@@ -7,8 +7,8 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    review = Review.find_by(id: params[:id])
-    render json: review
+    review = find_review
+    render json: review 
   end
 
   def create
@@ -22,7 +22,7 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    review = Review.find(params[:id])
+    review = find_review
     # byebug
     if review
       review.update(review_params)
@@ -34,11 +34,15 @@ class ReviewsController < ApplicationController
 
   def destroy
     # byebug
-    review = Review.find(params[:id])
+    review = find_review
     review.destroy
   end
 
   private
+
+  def find_review
+    Review.find_by(id: params[:id])
+  end 
 
   def review_params
     params.permit(:review, :player_id, :tennis_club_id)

@@ -49,7 +49,7 @@ function App() {
       <NavBar user={user} setUser={setUser} />
       <main>
         <Switch>
-          <Route path="/new">
+          <Route path="/newreview">
             <NewReview
               user={user}
               clubs={clubs}

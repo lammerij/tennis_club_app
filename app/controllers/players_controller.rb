@@ -21,13 +21,13 @@ class PlayersController < ApplicationController
 
   private
 
-  def user_data_invalid(error_hash)
-    render json: { errors: error_hash.record.errors.full_messages }, status: :unprocessable_entity
-  end
+  # def user_data_invalid(error_hash)
+  #   render json: { errors: error_hash.record.errors.full_messages }, status: :unprocessable_entity
+  # end
 
-  def user_data_not_found
-    render json: { error: "Not authorized." }, status: :unauthorized unless session.include? :player_id
-  end
+  # def user_data_not_found
+  #   render json: { error: "Not authorized." }, status: :unauthorized unless session.include? :player_id
+  # end
 
   def player_params
     # byebug

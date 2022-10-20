@@ -47,7 +47,7 @@ function NewClub({ clubs, setClubs }) {
             setName(""),
             setLocation(""),
             setCourtType(""),
-            history.push("/reviews")
+            history.push("/tennis_clubs")
           );
       } else {
         response.json().then((error) => setErrors(error.errors));
