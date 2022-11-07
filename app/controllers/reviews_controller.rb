@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
 
   def show
     review = find_review
-    render json: review 
+    render json: review
   end
 
   def create
@@ -22,9 +22,9 @@ class ReviewsController < ApplicationController
   end
 
   def update
+    current_user = Player.find_by(id: session[:player_id])
     review = find_review
-    # byebug
-    if review
+    if review.player.id = current_user.id
       review.update(review_params)
       render json: review
     else
@@ -33,16 +33,19 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    # byebug
     review = find_review
-    review.destroy
+    if review.player.id = current_user.id
+      review.destroy
+    else
+      render json: { error: "Not your review!" }, status: :unprocessable_entity
+    end
   end
 
   private
 
   def find_review
     Review.find_by(id: params[:id])
-  end 
+  end
 
   def review_params
     params.permit(:review, :player_id, :tennis_club_id)
