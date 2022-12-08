@@ -34,7 +34,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     review = find_review
-    if review.player.id = current_user.id
+    if review.player.id = @current_user.id
       review.destroy
     else
       render json: { error: "Not your review!" }, status: :unprocessable_entity

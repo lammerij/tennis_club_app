@@ -7,7 +7,7 @@ function NewReview({ user, clubs, reviews, setReviews }) {
   const [review, setReview] = useState("");
   const [selectedClub, setSelectedClub] = useState({});
   const [errors, setErrors] = useState([]);
-  console.log(errors);
+  
 
   const history = useHistory();
 

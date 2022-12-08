@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Button, Input, FormField, Label, Error } from "../styles";
 
-function SignUpForm({ onLogin }) {
+function SignUpForm({ setUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -58,7 +58,7 @@ function SignUpForm({ onLogin }) {
     }).then((response) => {
       setIsLoading(false);
       if (response.ok) {
-        response.json().then((user) => onLogin(user));
+        response.json().then((user) => setUser(user));
       } else {
         response.json().then((error) => setErrors(error.errors));
       }

@@ -16,6 +16,14 @@ function App() {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
+    fetch("/me").then((response) => {
+      if (response.ok) {
+        response.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
+
+  useEffect(() => {
     fetch("/reviews")
       .then((response) => response.json())
       .then((review) => setReviews(review));
@@ -42,7 +50,7 @@ function App() {
     setReviews(deletedReviews);
   };
 
-  if (!user) return <Login onLogin={setUser} />;
+  if (!user) return <Login setUser={setUser} />;
 
   return (
     <>

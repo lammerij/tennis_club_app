@@ -8,10 +8,7 @@ function ReviewCard({
   aReview,
   user,
   deleteReviewList,
-  reviews,
-  setReviews,
   updatedReviewsList,
-  clubs,
 }) {
   const { id, player, tennis_club, review } = aReview;
   const [isEditing, setIsEditing] = useState(false);
@@ -42,7 +39,7 @@ function ReviewCard({
       </Review>
       <></>
       <WrapperChild>
-        <Button as={Link} to="/new">
+        <Button as={Link} to="/newreview">
           Create a New Review
         </Button>
       </WrapperChild>

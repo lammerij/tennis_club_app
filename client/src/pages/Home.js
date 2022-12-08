@@ -1,9 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-function Home() {
+function Home({user}) {
+
+
+
   return (
     <Wrapper>
+      <h1>Welcome {user.name}</h1>
       <img
         src="/images/pexels-bogdan-glisik-1405355.jpg"
         width="750"
