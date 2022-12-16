@@ -1,5 +1,6 @@
 class PlayersController < ApplicationController
-    skip_before_action :authorize, only: [:create]
+  skip_before_action :authorize, only: [:create]
+
   def index
     players = Player.all
     render json: players

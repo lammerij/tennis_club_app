@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get "/reviews/:id", to: "reviews#show"
   get "/tennis_clubs", to: "tennis_clubs#index"
   get "/players", to: "players#index"
-  get "/reviews/:id/:atp_rating", to: "reviews#rating"
+  get "/reviews/players/:atp_rating", to: "reviews#rating"
 
   post "/signup", to: "players#create"
   post "/login", to: "sessions#create"

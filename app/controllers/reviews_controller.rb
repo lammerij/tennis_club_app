@@ -11,12 +11,6 @@ class ReviewsController < ApplicationController
     render json: review
   end
 
-  # def rating
-  #   players = Player.all
-  #   above4 = players.filter((player) => player.rating >= 4)
-  #   render json: above4
-  # end
-
   def create
     player = Player.find_by(id: session[:player_id])
     review = player.reviews.create(review_params)
@@ -26,6 +20,13 @@ class ReviewsController < ApplicationController
       render json: { errors: ["Review must be more than 10 characters."] }, status: :unprocessable_entity
     end
   end
+
+
+  # def rating
+  #   players = Player.all
+  #   above4 = players.reviews.where(atp_rating: > 3)
+  #   render json: above4
+  # end
 
   def update
     current_user = Player.find_by(id: session[:player_id])
