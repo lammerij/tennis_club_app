@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  skip_before_action :authorize, only: [:create]
+  # skip_before_action :authorize, only: [:create]
 
   def index
     reviews = Review.all
@@ -10,6 +10,12 @@ class ReviewsController < ApplicationController
     review = find_review
     render json: review
   end
+
+  # def rating
+  #   players = Player.all
+  #   above4 = players.filter((player) => player.rating >= 4)
+  #   render json: above4
+  # end
 
   def create
     player = Player.find_by(id: session[:player_id])

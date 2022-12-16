@@ -35,7 +35,6 @@ function App() {
       .then((club) => setClubs(club));
   }, []);
 
-
   function updatedReviewsList(updatedReview) {
     const updateAll = reviews.map((rev) =>
       rev.id == updatedReview.id ? updatedReview : rev
