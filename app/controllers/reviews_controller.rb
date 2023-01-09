@@ -21,13 +21,6 @@ class ReviewsController < ApplicationController
     end
   end
 
-
-  # def rating
-  #   players = Player.all
-  #   above4 = players.reviews.where(atp_rating: > 3)
-  #   render json: above4
-  # end
-
   def update
     current_user = Player.find_by(id: session[:player_id])
     review = find_review
