@@ -9,7 +9,6 @@ function ClubCard({ club, setClubs }) {
     <Wrapper>
       <Club>
         <Box>
-          <h1>Tennis Club</h1>
           <h3>Name: {name}</h3>
           <h4>Court Type: {court_type}</h4>
           <h5>Location: {location}</h5>

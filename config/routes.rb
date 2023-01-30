@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "/reviews", to: "reviews#index"
   get "/reviews/:id", to: "reviews#show"
   get "/tennis_clubs", to: "tennis_clubs#index"
+  get "/tennis_clubs/:id", to: "tennis_clubs#show"
   get "/players", to: "players#index"
 
   post "/signup", to: "players#create"

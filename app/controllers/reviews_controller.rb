@@ -21,6 +21,7 @@ class ReviewsController < ApplicationController
     end
   end
 
+
   def update
     current_user = Player.find_by(id: session[:player_id])
     review = find_review
@@ -31,6 +32,7 @@ class ReviewsController < ApplicationController
       render json: { error: "Review not found" }, status: :not_found
     end
   end
+
 
   def destroy
     review = find_review

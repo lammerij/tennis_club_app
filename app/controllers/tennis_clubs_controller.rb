@@ -11,6 +11,11 @@ class TennisClubsController < ApplicationController
     render json: club
   end
 
+  def show
+    club = TennisClub.find_by(id: params[:id])
+    render json: club
+  end
+
   def create
     # byebug
     club = TennisClub.create(club_params)
@@ -20,6 +25,7 @@ class TennisClubsController < ApplicationController
       render json: { errors: ["Please fill out all fields"] }, status: :unprocessable_entity
     end
   end
+
 
 
   private

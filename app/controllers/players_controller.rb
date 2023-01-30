@@ -16,9 +16,12 @@ class PlayersController < ApplicationController
       session[:player_id] = new_player.id
       render json: new_player, status: :created
     else
-      render json: { errors: ["user_data_invalid"] }, status: :unprocessable_entity
+      render json: { error: ["user_data_invalid"] }, status: :unprocessable_entity
     end
   end
+
+  
+
 
   private
 

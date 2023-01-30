@@ -18,7 +18,7 @@ function NewReview({ user, clubs, reviews, setReviews }) {
   // // console.log(currentUser);
 
   function handleChange(event) {
-    const findClub = clubs.find((club) => club.id == event.target.value);
+    const findClub = clubs.find((club) => club.id === parseInt(event.target.value));
     setSelectedClub(findClub);
   }
   const listOfClubs = clubs.map((club) => {
@@ -64,7 +64,7 @@ function NewReview({ user, clubs, reviews, setReviews }) {
         <p>Select Club:</p>
         <form onSubmit={handleSubmit}>
           <FormField>
-            <select value={selectedClub.id} onChange={handleChange}>
+            <select value={selectedClub.id}  onChange={handleChange}>
               {listOfClubs}
             </select>
             <Input
